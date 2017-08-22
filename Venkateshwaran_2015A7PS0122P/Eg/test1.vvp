@@ -1,0 +1,114 @@
+#! c:/iverilog-x86/bin/vvp
+:ivl_version "10.0 (stable)" "(v10_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003bee00 .scope module, "mux2to1_beh" "mux2to1_beh" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /INPUT 1 "s"
+    .port_info 3 /OUTPUT 1 "f"
+o01f71fac .functor BUFZ 1, C4<z>; HiZ drive
+v003beed0_0 .net "a", 0 0, o01f71fac;  0 drivers
+o01f71fc4 .functor BUFZ 1, C4<z>; HiZ drive
+v003b42e8_0 .net "b", 0 0, o01f71fc4;  0 drivers
+v003b4340_0 .var "f", 0 0;
+o01f71ff4 .functor BUFZ 1, C4<z>; HiZ drive
+v003b4398_0 .net "s", 0 0, o01f71ff4;  0 drivers
+E_003bf448 .event edge, v003b42e8_0, v003beed0_0, v003b4398_0;
+S_003b4740 .scope module, "mux2to1_df" "mux2to1_df" 3 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /INPUT 1 "s"
+    .port_info 3 /OUTPUT 1 "f"
+o01f7206c .functor BUFZ 1, C4<z>; HiZ drive
+v003b43f0_0 .net "a", 0 0, o01f7206c;  0 drivers
+o01f72084 .functor BUFZ 1, C4<z>; HiZ drive
+v003b4448_0 .net "b", 0 0, o01f72084;  0 drivers
+v003be8d8_0 .net "f", 0 0, L_01f6cc28;  1 drivers
+o01f720b4 .functor BUFZ 1, C4<z>; HiZ drive
+v003be930_0 .net "s", 0 0, o01f720b4;  0 drivers
+L_01f6cc28 .functor MUXZ 1, o01f72084, o01f7206c, o01f720b4, C4<>;
+S_003b4810 .scope module, "testbench" "testbench" 4 4;
+ .timescale 0 0;
+v01f6cac8_0 .var "a", 0 0;
+v01f6cb20_0 .var "b", 0 0;
+v01f6cb78_0 .net "f", 0 0, L_01f954a8;  1 drivers
+v01f6cbd0_0 .var "s", 0 0;
+S_003be988 .scope module, "mux_gate" "mux2to1_gate" 4 7, 5 1 0, S_003b4810;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /INPUT 1 "s"
+    .port_info 3 /OUTPUT 1 "f"
+L_01f953d0 .functor NOT 1, v01f6cbd0_0, C4<0>, C4<0>, C4<0>;
+L_01f95418 .functor AND 1, v01f6cac8_0, v01f6cbd0_0, C4<1>, C4<1>;
+L_01f95460 .functor AND 1, v01f6cb20_0, L_01f953d0, C4<1>, C4<1>;
+L_01f954a8 .functor OR 1, L_01f95418, L_01f95460, C4<0>, C4<0>;
+v01f6c860_0 .net "a", 0 0, v01f6cac8_0;  1 drivers
+v01f6c8b8_0 .net "b", 0 0, v01f6cb20_0;  1 drivers
+v01f6c910_0 .net "c", 0 0, L_01f95418;  1 drivers
+v01f6c968_0 .net "d", 0 0, L_01f95460;  1 drivers
+v01f6c9c0_0 .net "e", 0 0, L_01f953d0;  1 drivers
+v01f6ca18_0 .net "f", 0 0, L_01f954a8;  alias, 1 drivers
+v01f6ca70_0 .net "s", 0 0, v01f6cbd0_0;  1 drivers
+    .scope S_003bee00;
+T_0 ;
+    %wait E_003bf448;
+    %load/vec4 v003b4398_0;
+    %pad/u 32;
+    %cmpi/e 1, 0, 32;
+    %jmp/0xz  T_0.0, 4;
+    %load/vec4 v003beed0_0;
+    %store/vec4 v003b4340_0, 0, 1;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v003b42e8_0;
+    %store/vec4 v003b4340_0, 0, 1;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_003b4810;
+T_1 ;
+    %vpi_call 4 10 "$dumpfile", "filename.vcd" {0 0 0};
+    %vpi_call 4 11 "$monitor", " ", $time, " a=%b, b=%b, s=%b f=%b", v01f6cac8_0, v01f6cb20_0, v01f6cbd0_0, v01f6cb78_0 {0 0 0};
+    %delay 0, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v01f6cac8_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v01f6cb20_0, 0, 1;
+    %delay 2, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v01f6cbd0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v01f6cbd0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v01f6cac8_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v01f6cb20_0, 0, 1;
+    %delay 15, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v01f6cbd0_0, 0, 1;
+    %delay 20, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v01f6cbd0_0, 0, 1;
+    %delay 100, 0;
+    %vpi_call 4 18 "$finish" {0 0 0};
+    %vpi_call 4 19 "$dumpvars" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 6;
+    "N/A";
+    "<interactive>";
+    "./mux3.v";
+    "./mux2.v";
+    "testbench.v";
+    "./mux.v";
