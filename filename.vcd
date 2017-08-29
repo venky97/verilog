@@ -1,0 +1,45 @@
+$date
+	Tue Aug 29 15:04:57 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module testbench2 $end
+$var wire 1 ! h $end
+$var wire 1 " g $end
+$var wire 1 # f $end
+$var wire 1 $ e $end
+$var reg 1 % a $end
+$var reg 1 & i $end
+$var reg 1 ' x $end
+$var reg 1 ( y $end
+$var reg 1 ) z $end
+$scope module g1 $end
+$var wire 1 % a0 $end
+$var wire 1 ' a1 $end
+$var wire 1 ( a2 $end
+$var wire 1 ) a3 $end
+$var wire 1 $ b0 $end
+$var wire 1 # b1 $end
+$var wire 1 " b2 $end
+$var wire 1 ! b3 $end
+$var wire 1 & e $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0)
+0(
+0'
+0&
+1%
+0$
+0#
+0"
+0!
+$end
+#10000
