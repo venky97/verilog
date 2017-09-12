@@ -1,0 +1,181 @@
+$date
+	Tue Sep 12 14:50:23 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_8bit2to1mux $end
+$var wire 8 ! out [7:0] $end
+$var reg 8 " INP1 [7:0] $end
+$var reg 8 # INP2 [7:0] $end
+$var reg 1 $ SEL $end
+$scope module M1 $end
+$var wire 8 % in1 [7:0] $end
+$var wire 8 & in2 [7:0] $end
+$var wire 1 $ sel $end
+$var wire 8 ' out [7:0] $end
+$scope module m0 $end
+$var wire 1 ( a1 $end
+$var wire 1 ) a2 $end
+$var wire 1 * in1 $end
+$var wire 1 + in2 $end
+$var wire 1 , not_sel $end
+$var wire 1 - out $end
+$var wire 1 $ sel $end
+$upscope $end
+$scope module m1 $end
+$var wire 1 . a1 $end
+$var wire 1 / a2 $end
+$var wire 1 0 in1 $end
+$var wire 1 1 in2 $end
+$var wire 1 2 not_sel $end
+$var wire 1 3 out $end
+$var wire 1 $ sel $end
+$upscope $end
+$scope module m2 $end
+$var wire 1 4 a1 $end
+$var wire 1 5 a2 $end
+$var wire 1 6 in1 $end
+$var wire 1 7 in2 $end
+$var wire 1 8 not_sel $end
+$var wire 1 9 out $end
+$var wire 1 $ sel $end
+$upscope $end
+$scope module m3 $end
+$var wire 1 : a1 $end
+$var wire 1 ; a2 $end
+$var wire 1 < in1 $end
+$var wire 1 = in2 $end
+$var wire 1 > not_sel $end
+$var wire 1 ? out $end
+$var wire 1 $ sel $end
+$upscope $end
+$scope module m4 $end
+$var wire 1 @ a1 $end
+$var wire 1 A a2 $end
+$var wire 1 B in1 $end
+$var wire 1 C in2 $end
+$var wire 1 D not_sel $end
+$var wire 1 E out $end
+$var wire 1 $ sel $end
+$upscope $end
+$scope module m5 $end
+$var wire 1 F a1 $end
+$var wire 1 G a2 $end
+$var wire 1 H in1 $end
+$var wire 1 I in2 $end
+$var wire 1 J not_sel $end
+$var wire 1 K out $end
+$var wire 1 $ sel $end
+$upscope $end
+$scope module m6 $end
+$var wire 1 L a1 $end
+$var wire 1 M a2 $end
+$var wire 1 N in1 $end
+$var wire 1 O in2 $end
+$var wire 1 P not_sel $end
+$var wire 1 Q out $end
+$var wire 1 $ sel $end
+$upscope $end
+$scope module m7 $end
+$var wire 1 R a1 $end
+$var wire 1 S a2 $end
+$var wire 1 T in1 $end
+$var wire 1 U in2 $end
+$var wire 1 V not_sel $end
+$var wire 1 W out $end
+$var wire 1 $ sel $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1W
+1V
+0U
+1T
+1S
+0R
+0Q
+1P
+1O
+0N
+0M
+0L
+1K
+1J
+0I
+1H
+1G
+0F
+0E
+1D
+1C
+0B
+0A
+0@
+1?
+1>
+0=
+1<
+1;
+0:
+09
+18
+17
+06
+05
+04
+13
+12
+01
+10
+1/
+0.
+0-
+1,
+1+
+0*
+0)
+0(
+b10101010 '
+b1010101 &
+b10101010 %
+0$
+b1010101 #
+b10101010 "
+b10101010 !
+$end
+#100
+03
+0?
+0K
+0W
+1-
+0/
+19
+0;
+1E
+0G
+b1010101 !
+b1010101 '
+1Q
+0S
+0,
+1(
+02
+08
+14
+0>
+0D
+1@
+0J
+0P
+1L
+0V
+1$
+#1100

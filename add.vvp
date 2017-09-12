@@ -1,0 +1,69 @@
+#! c:/iverilog-x86/bin/vvp
+:ivl_version "10.0 (stable)" "(v10_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007e3b88 .scope module, "tb_add" "tb_add" 2 1;
+ .timescale 0 0;
+v01f80d60_0 .var "IN1", 0 0;
+v01f80db8_0 .var "IN2", 0 0;
+v01f80e10_0 .net "OUT", 0 0, L_01f80f70;  1 drivers
+v01f80e68_0 .var "cin", 0 0;
+v01f80ec0_0 .net "cout", 0 0, L_01f80f18;  1 drivers
+S_007e3c58 .scope module, "a1" "add1" 2 6, 3 1 0, S_007e3b88;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Cout"
+    .port_info 1 /OUTPUT 1 "Sum"
+    .port_info 2 /INPUT 1 "In1"
+    .port_info 3 /INPUT 1 "In2"
+    .port_info 4 /INPUT 1 "Cin"
+v007ece30_0 .net "Cin", 0 0, v01f80e68_0;  1 drivers
+v007ee810_0 .net "Cout", 0 0, L_01f80f18;  alias, 1 drivers
+v007ee868_0 .net "In1", 0 0, v01f80d60_0;  1 drivers
+v007ee8c0_0 .net "In2", 0 0, v01f80db8_0;  1 drivers
+v007ee918_0 .net "Sum", 0 0, L_01f80f70;  alias, 1 drivers
+L_01f81c70 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v007ee970_0 .net *"_s10", 0 0, L_01f81c70;  1 drivers
+v007edb78_0 .net *"_s11", 1 0, L_01f81078;  1 drivers
+v007edbd0_0 .net *"_s13", 1 0, L_01f810d0;  1 drivers
+L_01f81c98 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v007edc28_0 .net *"_s16", 0 0, L_01f81c98;  1 drivers
+v007edc80_0 .net *"_s17", 1 0, L_01f81128;  1 drivers
+v01f80c58_0 .net *"_s3", 1 0, L_01f80fc8;  1 drivers
+L_01f81c48 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v01f80cb0_0 .net *"_s6", 0 0, L_01f81c48;  1 drivers
+v01f80d08_0 .net *"_s7", 1 0, L_01f81020;  1 drivers
+L_01f80f18 .part L_01f81128, 1, 1;
+L_01f80f70 .part L_01f81128, 0, 1;
+L_01f80fc8 .concat [ 1 1 0 0], v01f80d60_0, L_01f81c48;
+L_01f81020 .concat [ 1 1 0 0], v01f80db8_0, L_01f81c70;
+L_01f81078 .arith/sum 2, L_01f80fc8, L_01f81020;
+L_01f810d0 .concat [ 1 1 0 0], v01f80e68_0, L_01f81c98;
+L_01f81128 .arith/sum 2, L_01f81078, L_01f810d0;
+    .scope S_007e3b88;
+T_0 ;
+    %vpi_call 2 9 "$dumpfile", "add.vcd" {0 0 0};
+    %vpi_call 2 10 "$dumpvars" {0 0 0};
+    %vpi_call 2 11 "$monitor", " ", $time, " IN1=%b,IN2 = %b,cout=%b,OUT=%b", v01f80d60_0, v01f80db8_0, v01f80ec0_0, v01f80e10_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v01f80d60_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v01f80db8_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v01f80e68_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v01f80d60_0, 0, 1;
+    %delay 400, 0;
+    %vpi_call 2 16 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "b_add.v";
+    "add1.v";
